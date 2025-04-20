@@ -1,0 +1,13 @@
+extends base
+
+mixin categoryCard(image, text)
+  div.main-content-categories-card(data-id=text)
+    img.main-content-categories-card_img(src=`/img/static/${image}` alt="image")
+    p.main-content-categories-card_text= text
+
+block content
+  p.section-title Categories
+  div.main-content-categories
+    - const categories = ['Fertilizers', 'Seeds', 'flowers pot', 'Plants', 'accessories', 'tools']
+    each category in categories
+      +categoryCard(`/${category}.png`, category)

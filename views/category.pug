@@ -1,0 +1,17 @@
+extends base
+
+block content
+  p.section-title= title.charAt(0).toUpperCase() + title.slice(1)
+  div.main-content-products
+    if products.length === 0
+      p.main-content-products_empty No products found
+    else
+      each product in products
+        div.main-content-product-card(data-id=product.slug)
+          img.main-content-product-card_img(src=`/img/${product.category}/${product.imageCover}` alt="product")
+          p.main-content-product-card_name= product.name
+          p.main-content-product-card_quantity= `${product.quantity} in stock`
+          div.main-content-product-card_footer
+            p.main-content-product-card_price= `${product.price}₹`
+            a.main-content-product-card_addcart(href="#")
+              i.fa-solid.fa-plus

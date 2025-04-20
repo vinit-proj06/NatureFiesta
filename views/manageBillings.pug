@@ -1,0 +1,44 @@
+extends account
+
+block content
+  .user
+    include navigation
+    .user-content#admin-billings
+      h2.admin-heading Billing Management
+      .admin-controls
+        input.date-filter(type="date")
+        select.status-filter
+          option(value="All Payments") All Payments
+          option(value="completed") Successful
+          option(value="pending") Pending
+          option(value="failed") Failed
+          option(value="refunded") Refunded
+      table.admin-table
+        thead
+          tr
+            th Transaction ID
+            th User
+            th Amount
+            th Method
+            th Date
+            th Status
+            th Actions
+        tbody
+          if orders && orders.length > 0
+            each order in orders
+              tr(data-order-id=order.razorpayOrderId)
+                td= order.razorpayOrderId.slice(-6).toUpperCase()
+                td= order.user ? order.user.name : 'N/A'
+                td ₹#{order.totalAmount.toFixed(2)}
+                td= order.razorpayPaymentId ? 'Razorpay' : 'N/A'
+                td= order.paidAt ? order.paidAt.toLocaleDateString() : 'N/A'
+                td
+                  span.status-badge(class=order.status)= order.status
+                td
+                  if order.status === 'completed'
+                    button.action-btn.refund-btn(data-order-id=order.razorpayOrderId) Refund
+                  a.action-btn.view-details-btn(href=`/orders/${order.razorpayOrderId}`) Details
+          else
+            tr
+              td(colspan="7") No transactions found
+      script(src='/js/admin.js')

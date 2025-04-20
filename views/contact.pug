@@ -1,0 +1,38 @@
+extends base
+
+block content
+  section.contact(id="Contact")
+    .contact-wrapper
+      h1.heading Contact Us
+      .contact-container
+        .contact-content
+          h3 Let's Connect
+          p.contact-description Reach out to us for any inquiries or assistance. We're here to help!
+          .contact-details
+            .detail
+              i.fa-solid.fa-envelope
+              span info@example.com
+            .detail
+              i.fa-solid.fa-phone
+              span +1 (123) 456-7890
+            .detail
+              i.fa-solid.fa-map-marker-alt
+              span 2464 Royal Ln. Mesa
+          form#contact-form(action="/contact" method="POST")
+            .form-group
+              label(for="name") Name
+              input#name(type="text" name="name" placeholder="Your Name" required)
+            .form-group
+              label(for="email") Email
+              input#email(type="email" name="email" placeholder="Your Email" required)
+            .form-group
+              label(for="subject") Subject
+              input#subject(type="text" name="subject" placeholder="Subject" required)
+            .form-group
+              label(for="message") Message
+              textarea#message(name="message" placeholder="Your Message" rows="5" required)
+            .form-group
+              button.submit-btn(type="submit")
+                i.fa-solid.fa-paper-plane
+                |  Send Message
+          p.form-message#form-message

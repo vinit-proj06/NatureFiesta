@@ -1,0 +1,74 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title #{title}
+    link(href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet")
+    link(rel="preconnect" href="https://fonts.googleapis.com")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet")
+    //- link(rel="stylesheet" href="/css/res_base.css")
+    //- link(rel="stylesheet" href="/css/res_overview.css")
+    link(rel="stylesheet" href="/css/style.css")
+
+  body
+    .container
+      .sidebar
+        a.logo(href="#")
+          i.fa-solid.fa-leaf(style="color: #02c39a")
+        nav.nav
+          a.nav-link(href="/")
+            i.fa-solid.fa-house.icon-hover
+          a.nav-link(href="/contact")
+            i.fa-solid.fa-phone
+          a.nav-link(href="/category")
+            i.fa-solid.fa-list
+          a.nav-link(href="/me")
+            i.fa-solid.fa-user
+        .auth
+          a.auth-link(class=user ? "user-logged-in" : "user-logged-out", href=user ? "/logout" : "/login")
+            if user
+              i.fa-solid.fa-arrow-right-from-bracket.icon(style="color: crimson")
+            else
+              i.fa-solid.fa-arrow-right-to-bracket.icon(style="color: #02c39a")
+
+      main.main
+        .main-container
+          .main-bar
+            .main-bar-address
+              if user
+                p.main-bar-address-text 2464 Royal Ln. Mesa
+                span= `Hii, ${user.name} your address`
+              else
+                p.main-bar-address-text PLEASE LOGIN!!
+                span Left Bottom 👇
+            form.main-bar-search(action="#")
+              input.main-bar-search__input(type="text" placeholder="Search products...")
+              i.fa-solid.fa-magnifying-glass(style="color: grey")
+            if user
+              .main-bar-cart
+                i.fa-solid.fa-cart-shopping
+                span.cart-count 4
+            else
+              .main-bar-cart
+                i.fa-solid.fa-cart-shopping
+                span.cart-count 0
+              
+
+        .main-content
+          block content 
+            h1 placeholder of overview
+  //- script(src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.8.4/axios.min.js")
+  script(src="https://checkout.razorpay.com/v1/checkout.js")
+  script(src='/js/bundle.js')
+  script(src='/js/login.js')
+  script(src='/js/cart.js')
+  script(src='/js/auth.js')
+  script(src='/js/product.js')
+  script(src='/js/payment.js')
+  script(src="/js/billing.js")
+  script(src="/js/reviews.js")
+  script(src="/js/account.js")
+  script(src="/js/contact.js")
+  script(src="/js/reviewFormError.js")

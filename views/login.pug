@@ -1,0 +1,16 @@
+extends base
+
+block content
+  div.login-form
+    if message
+      .alert.alert-info= message
+    h2.form-heading LOG INTO YOUR ACCOUNT
+    form.form
+      .form_group  
+        label.form_label(for="email") Email Address
+        input#email.form_input(type="email", placeholder="example@gmail.com", required)
+      .form_group
+        label.form_label(for="password") Password
+        input#password.form_input(type="password", placeholder="••••••••", required, minlength='8')
+      .form_group
+        button.btn(type="submit") Login

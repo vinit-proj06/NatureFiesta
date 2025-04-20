@@ -1,0 +1,173 @@
+[
+  {
+    "name": "Liquid Fertilizer 1L",
+    "category": "Fertilizers",
+    "price": 15,
+    "priceDiscount": 12,
+    "description": "Concentrated liquid fertilizer for quick plant nutrition.",
+    "imageCover": "liquid-fertilizer-cover.jpg",
+    "images": [
+      "liquid-fertilizer-1.jpg",
+      "liquid-fertilizer-2.jpg",
+      "liquid-fertilizer-3.jpg"
+    ],
+    "quantity": 70
+  },
+  {
+    "name": "Liquid Fertilizer 2L",
+    "category": "Fertilizers",
+    "price": 25,
+    "priceDiscount": 22,
+    "description": "Concentrated liquid fertilizer for quick plant nutrition.",
+    "imageCover": "liquid-fertilizer-cover.jpg",
+    "images": [
+      "liquid-fertilizer-1.jpg",
+      "liquid-fertilizer-2.jpg",
+      "liquid-fertilizer-3.jpg"
+    ],
+    "quantity": 50
+  },
+  {
+    "name": "Compost Fertilizer 5kg",
+    "category": "Fertilizers",
+    "price": 20,
+    "description": "Organic compost fertilizer for enriching soil.",
+    "imageCover": "compost-fertilizer-cover.jpg",
+    "images": [
+      "compost-fertilizer-1.jpg",
+      "compost-fertilizer-2.jpg",
+      "compost-fertilizer-3.jpg"
+    ],
+    "quantity": 90
+  },
+  {
+    "name": "Compost Fertilizer 10kg",
+    "category": "Fertilizers",
+    "price": 35,
+    "description": "Organic compost fertilizer for enriching soil.",
+    "imageCover": "compost-fertilizer-cover.jpg",
+    "images": [
+      "compost-fertilizer-1.jpg",
+      "compost-fertilizer-2.jpg",
+      "compost-fertilizer-3.jpg"
+    ],
+    "quantity": 60
+  },
+  {
+    "name": "Bell Pepper Seeds Pack",
+    "category": "Seeds",
+    "price": 6,
+    "priceDiscount": 5,
+    "description": "High-quality bell pepper seeds for home gardening.",
+    "imageCover": "bell-pepper-seeds-cover.jpg",
+    "images": [
+      "bell-pepper-seeds-1.jpg",
+      "bell-pepper-seeds-2.jpg",
+      "bell-pepper-seeds-3.jpg"
+    ],
+    "quantity": 180
+  },
+  {
+    "name": "Lettuce Seeds Pack",
+    "category": "Seeds",
+    "price": 4,
+    "description": "Fresh lettuce seeds for healthy salads.",
+    "imageCover": "lettuce-seeds-cover.jpg",
+    "images": [
+      "lettuce-seeds-1.jpg",
+      "lettuce-seeds-2.jpg",
+      "lettuce-seeds-3.jpg"
+    ],
+    "quantity": 150
+  },
+  {
+    "name": "Sunflower Seeds Pack",
+    "category": "Seeds",
+    "price": 5,
+    "priceDiscount": 4,
+    "description": "Bright sunflower seeds for your garden.",
+    "imageCover": "sunflower-seeds-cover.jpg",
+    "images": [
+      "sunflower-seeds-1.jpg",
+      "sunflower-seeds-2.jpg",
+      "sunflower-seeds-3.jpg"
+    ],
+    "quantity": 200
+  },
+  {
+    "name": "Orchid Flower Pot",
+    "category": "flowers pot",
+    "price": 20,
+    "priceDiscount": 18,
+    "description": "Elegant orchid flower pot for indoor decoration.",
+    "imageCover": "orchid-pot-cover.jpg",
+    "images": ["orchid-pot-1.jpg", "orchid-pot-2.jpg", "orchid-pot-3.jpg"],
+    "quantity": 40
+  },
+  {
+    "name": "Lily Flower Pot",
+    "category": "flowers pot",
+    "price": 22,
+    "description": "Beautiful lily flower pot for your garden.",
+    "imageCover": "lily-pot-cover.jpg",
+    "images": ["lily-pot-1.jpg", "lily-pot-2.jpg", "lily-pot-3.jpg"],
+    "quantity": 55
+  },
+  {
+    "name": "Fern Plant",
+    "category": "Plants",
+    "price": 30,
+    "priceDiscount": 27,
+    "description": "Lush fern plant for indoor or outdoor spaces.",
+    "imageCover": "fern-plant-cover.jpg",
+    "images": ["fern-plant-1.jpg", "fern-plant-2.jpg", "fern-plant-3.jpg"],
+    "quantity": 70
+  },
+  {
+    "name": "Aloe Vera Plant",
+    "category": "Plants",
+    "price": 18,
+    "description": "Healing aloe vera plant for your home.",
+    "imageCover": "aloe-vera-cover.jpg",
+    "images": ["aloe-vera-1.jpg", "aloe-vera-2.jpg", "aloe-vera-3.jpg"],
+    "quantity": 90
+  },
+  {
+    "name": "Gardening Apron",
+    "category": "accessories",
+    "price": 12,
+    "priceDiscount": 10,
+    "description": "Stylish and functional gardening apron.",
+    "imageCover": "apron-cover.jpg",
+    "images": ["apron-1.jpg", "apron-2.jpg", "apron-3.jpg"],
+    "quantity": 100
+  },
+  {
+    "name": "Plant Mister",
+    "category": "accessories",
+    "price": 8,
+    "description": "Handy plant mister for delicate plants.",
+    "imageCover": "mister-cover.jpg",
+    "images": ["mister-1.jpg", "mister-2.jpg", "mister-3.jpg"],
+    "quantity": 120
+  },
+  {
+    "name": "Garden Hoe",
+    "category": "tools",
+    "price": 18,
+    "priceDiscount": 15,
+    "description": "Durable garden hoe for soil cultivation.",
+    "imageCover": "hoe-cover.jpg",
+    "images": ["hoe-1.jpg", "hoe-2.jpg", "hoe-3.jpg"],
+    "quantity": 75
+  },
+  {
+    "name": "Garden Rake",
+    "category": "tools",
+    "price": 20,
+    "description": "Sturdy garden rake for cleaning and leveling soil.",
+    "imageCover": "rake-cover.jpg",
+    "images": ["rake-1.jpg", "rake-2.jpg", "rake-3.jpg"],
+    "quantity": 60
+  }
+]

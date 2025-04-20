@@ -1,0 +1,51 @@
+extends account
+
+block content
+  .user
+    include navigation
+    .user-content#admin-users
+      h2.admin-heading User Management
+      .admin-controls
+        input.search-input(type="text" placeholder="Search users...")
+        select.role-filter
+          option(value="All Roles") All Roles
+          option(value="admin") Admin
+          option(value="customer") Customer
+          option(value="vendor") Vendor
+      table.admin-table
+        thead
+          tr
+            th User
+            th Email
+            th Role
+            th Joined
+            th Status
+            th Actions
+        tbody
+          if users && users.length > 0
+            each user in users
+              tr(data-user-id=user._id)
+                td
+                  .user-info
+                    img.user-avatar(src=user.photo || '/img/default-user.jpg')
+                    span= user.name
+                td= user.email
+                td
+                  span.role-badge(class=user.role)= user.role
+                td= user.createdAt ? user.createdAt.toLocaleDateString() : 'N/A'
+                td
+                  span.status-badge(class=user.active ? 'active' : 'inactive')= user.active ? 'Active' : 'Inactive'
+                td
+                  select.role-select(data-user-id=user._id)
+                    option(value="admin" selected=user.role === 'admin') Admin
+                    option(value="customer" selected=user.role === 'customer') Customer
+                    option(value="vendor" selected=user.role === 'vendor') Vendor
+                  select.status-select(data-user-id=user._id)
+                    option(value="true" selected=user.active) Active
+                    option(value="false" selected=!user.active) Inactive
+                  button.action-btn.delete-btn(data-user-id=user._id)
+                    i.fas.fa-trash
+          else
+            tr
+              td(colspan="6") No users found
+      script(src='/js/admin.js')

@@ -1,0 +1,37 @@
+extends base
+
+block content
+  .user
+    include navigation
+    .user-content.flex-fix
+      .user-content-profile
+        img.user-content-profile_picture(src=`/img/users/${user.name.split(' ')[0]}.jpg` alt=`${user.name}`)
+        input.form__upload(type="file" accept='image/*' name="photo" id="photo")
+        label(for="photo")
+          i.fa-solid.fa-user-pen.profile-edit__icon
+          | Edit picture
+        button.btn.profile-save__btn Save settings
+
+      .user-content-edit
+        .user-content-edit-details
+          h2.form-heading Your account settings
+          form.form
+            .form_group
+              label.form_label(for="name") Name
+              input#name.form_input(type="text" value=`${user.name}`)
+            .form_group
+              label.form_label(for="email") Email Address
+              input.form_input(type="email" placeholder=`${user.email}`)
+
+        .user-content-edit-password
+          h2.form-heading Password change
+          form.form
+            .form_group
+              label.form_label(for="current-password") Current password
+              input#current-password.form_input(type="password" placeholder="........")
+            .form_group
+              label.form_label(for="new-password") New password
+              input#new-password.form_input(type="password" placeholder="........")
+            .form_group
+              label.form_label(for="confirm-password") Confirm password
+              input#confirm-password.form_input(type="password" placeholder="........")

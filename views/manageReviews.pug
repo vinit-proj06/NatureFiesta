@@ -1,0 +1,43 @@
+extends account
+
+block content
+  .user
+    include navigation
+    .user-content#admin-reviews
+      h2.admin-heading Review Management
+      .admin-controls
+        select.filter-select
+          option(value="All Reviews") All Reviews
+          option(value="approved") Approved
+          option(value="pending") Pending
+          option(value="flagged") Flagged
+      .review-list
+        if reviews && reviews.length > 0
+          each review in reviews
+            .admin-review-card(data-review-id=review._id)
+              .review-header
+                .user-info
+                  if review.user
+                    //- img.user-avatar(src=review.user.photo || '/img/default-user.jpg')
+                    span.user-name= review.user.name 
+
+                .review-meta
+                  span.rating= '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating)
+                  span.date= review.createdAt ? review.createdAt.toLocaleDateString() : 'N/A'
+              .review-content
+                p= review.review
+                if review.images && review.images.length > 0
+                  .review-images
+                    each img in review.images
+                      img.review-thumbnail(src=img)
+                p Product: #{review.product ? review.product.name : 'N/A'}
+                p Status: #{review.status}
+              .review-actions
+                if review.status !== 'approved'
+                  button.action-btn.approve-btn(data-review-id=review._id) Approve
+                button.action-btn.delete-btn(data-review-id=review._id) Delete
+                if review.status !== 'flagged'
+                  button.action-btn.flag-btn(data-review-id=review._id) Flag
+        else
+          .no-reviews No reviews found
+      script(src='/js/admin.js')

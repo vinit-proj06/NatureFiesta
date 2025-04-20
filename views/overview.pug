@@ -1,0 +1,48 @@
+extends base
+
+mixin categoryCard(image, text)
+  div.main-content-categories-card(data-id=text)
+    img.main-content-categories-card_img(src=`/img/static/${image}` alt="image")
+    p.main-content-categories-card_text= text
+
+block content
+
+  div.main-content-carousel
+    div.main-content-carousel-card
+      p.main-content-carousel-card_text
+        span Make Your Plants Strong
+      img.main-content-carousel-card_img(src="/img/static/fertilizer1.png")
+
+    div.main-content-carousel-card(style="background-color: #70287a")
+      p.main-content-carousel-card_text
+        span Discover a Range of Plants
+      img.main-content-carousel-card_img(src="/img/static/bonsai.png")
+
+    div.main-content-carousel-card(style="background-color: #245d4c")
+      p.main-content-carousel-card_text
+        span Kickstart gardening with seeds
+      img.main-content-carousel-card_img(src="/img/static/planting.png")
+
+    div.main-content-carousel-card
+      p.main-content-carousel-card_text
+        span Kitchen compost in house
+      img.main-content-carousel-card_img(src="/img/static/compost.png")
+
+  p.section-title Categories
+  div.main-content-categories
+    - const categories = ['Fertilizers', 'Seeds', 'flowers pot', 'Plants', 'accessories', 'tools',]
+    each category in categories
+      +categoryCard( `/${category}.png` ,category) 
+
+  p.section-title Featured Products
+  div.main-content-products
+    each product in products
+      div.main-content-product-card(data-id=product.slug)
+        img.main-content-product-card_img(src=`/img/${product.category}/${product.imageCover}` alt="product")
+        p.main-content-product-card_name= product.name
+        p.main-content-product-card_quantity= `${product.quantity} in stock`
+        div.main-content-product-card_footer
+          p.main-content-product-card_price= `${product.price}₹`
+          button.main-content-product-card_addcart(data-slug=[product.slug, product.price, product.name, product.imageCover, product.quantity])
+            i.fa-solid.fa-plus
+

@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Adarsh Pathak",
+    "email": "admin@gmail.com",
+    "role": "admin",
+    "password": "admin1234",
+    "passwordConfirm": "admin1234"
+  },
+  {
+    "name": "John Smith",
+    "email": "john.smith@example.com",
+    "role": "user",
+    "password": "test1234",
+    "passwordConfirm": "test1234"
+  },
+  {
+    "name": "Sarah Johnson",
+    "email": "sarah.j@example.com",
+    "role": "user",
+    "password": "test1234",
+    "passwordConfirm": "test1234"
+  },
+  {
+    "name": "Michael Chen",
+    "email": "mchen@example.c,er",
+    "password": "test1234",
+    "passwordConfirm": "test1234"
+  },
+  {
+    "name": "Emma Williams",
+    "email": "emma.w@example.co",
+    "role": "user",
+    "password": "test1234",
+    "passwordConfirm": "test1234"
+  },
+  {
+    "name": "Robert Taylor",
+    "email": "rob.taylor@example.com",
+    "role": "user",
+    "password": "test1234",
+    "passwordConfirm": "test1234"
+  },
+  {
+    "name": "Amanda Rodriguez",
+    "email": "a.rodriguez@example.com",
+    "role": "user",
+    "password": "test1234",
+    "passwordConfirm": "test1234"
+  },
+  {
+    "name": "David Lee",
+    "email": "david.lee@example.c,er",
+    "password": "test1234",
+    "passwordConfirm": "test1234"
+  },
+  {
+    "name": "Jennifer Brown",
+    "email": "jen.brown@example.com",
+    "role": "user",
+    "password": "test1234",
+    "passwordConfirm": "test1234"
+  },
+  {
+    "name": "Carlos Martinez",
+    "email": "carlos.m@example.com",
+    "role": "user",
+    "password": "test1234",
+    "passwordConfirm": "test1234"
+  },
+  {
+    "name": "Lisa Wang",
+    "email": "lisa.wang@example.com",
+    "role": "user",
+    "password": "test1234",
+    "passwordConfirm": "test1234"
+  },
+  {
+    "name": "Kevin Patel",
+    "email": "k.patel@example.c,er",
+    "password": "test1234",
+    "passwordConfirm": "test1234"
+  },
+  {
+    "name": "Sophie Miller",
+    "email": "sophie.m@example.com",
+    "role": "user",
+    "password": "test1234",
+    "passwordConfirm": "test1234"
+  },
+  {
+    "name": "Thomas Wilson",
+    "email": "t.wilson@example.com",
+    "role": "user",
+    "password": "test1234",
+    "passwordConfirm": "test1234"
+  },
+  {
+    "name": "Natalie Garcia",
+    "email": "natalie.g@example.com",
+    "role": "user",
+    "password": "test1234",
+    "passwordConfirm": "test1234"
+  },
+  {
+    "name": "Daniel Kim",
+    "email": "daniel.kim@example.c,er",
+    "password": "test1234",
+    "passwordConfirm": "test1234"
+  }
+]

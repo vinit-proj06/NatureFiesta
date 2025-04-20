@@ -1,0 +1,38 @@
+extends account
+
+block content
+  .user
+    include navigation
+    .user-content.flex-fix
+      .user-content-reviews
+        h2.form-heading My Reviews
+        .review-list
+          if reviews.length > 0
+            each review in reviews
+              .review-card
+                .review-header
+                  if review.product
+                    //- img.review-product-img(src=`/img/${review.product.category}/${review.product.imageCover}`, alt=review.product.name)
+                    .review-product-info
+                      .review-product-name= review.product.name
+                      .review-date= review.createdAt.toLocaleDateString()
+                    .review-rating
+                      - for (let i = 1; i <= 5; i++)
+                        if i <= review.rating
+                          i.fas.fa-star
+                        else if i === Math.ceil(review.rating) && review.rating % 1 !== 0
+                          i.fas.fa-star-half-alt
+                        else
+                          i.far.fa-star
+                  else
+                    script.
+                      console.log('Missing product for review: #{review._id}');
+                .review-text= review.review
+                .review-actions
+                  a.review-action-btn(href=`/review/${review._id}/edit`) Edit Review
+                  button.review-action-btn.review-action-delete(data-review-id=review._id) Delete Review
+          else
+            .no-reviews
+              i.fas.fa-star
+              | No reviews found
+        a.review-action-btn(href="/review/new") Add Review

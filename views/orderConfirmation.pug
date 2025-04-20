@@ -1,0 +1,63 @@
+extends account
+
+block content
+  .user
+    include navigation
+    .user-content.flex-fix
+      .user-content-reviews
+        h2.form-heading Order Confirmation
+        .order-confirmation-message Thank you for your order! You'll receive a confirmation soon.
+        .review-list
+          if order && order.items && order.items.length > 0
+            .order-group
+              .review-header
+                .order-id #ORD-#{order._id.toString().slice(-6).toUpperCase()}
+                .order-date= order.createdAt ? order.createdAt.toLocaleDateString() : 'N/A'
+                .order-status(class=`status-${order.status}`)= order.status
+              each item in order.items
+                if item.product && item.product._id && item.product.slug && item.product.slug !== ''
+                  .review-card(data-order-id=order._id, data-product-id=item.product._id)
+                    .review-header
+                      img.review-product-img(src=`/img/${item.product.category}/${item.product.imageCover || 'placeholder.jpg'}`, alt=item.product.name)
+                      .review-product-info
+                        .review-product-name= item.product.name
+                        .review-product-price ₹#{item.price}
+                        .review-product-quantity Quantity: #{item.quantity}
+                      .review-date= order.createdAt ? order.createdAt.toLocaleDateString() : 'N/A'
+                    .order-delivery
+                      .delivery-info
+                        .delivery-label Delivery Address:
+                        .delivery-value= order.deliveryDetails && order.deliveryDetails.address ? order.deliveryDetails.address : 'Not specified'
+                      .delivery-info
+                        .delivery-label Status:
+                        .delivery-value= order.deliveryDetails && order.deliveryDetails.status ? order.deliveryDetails.status : order.status
+                    .order-summary
+                      .order-summary-row
+                        .order-summary-label Subtotal
+                        .order-summary-value ₹#{item.price * item.quantity}
+                      .order-total
+                        .order-summary-label Total
+                        .order-summary-value ₹#{order.totalAmount}
+                    .order-payment
+                      .payment-info
+                        .payment-label Payment Method:
+                        .payment-value Razorpay (ID: #{order.razorpayPaymentId || 'N/A'})
+                      .payment-info
+                        .payment-label Total Amount:
+                        .payment-value ₹#{order.totalAmount}
+                      .payment-info
+                        .payment-label Paid On:
+                        .payment-value= order.paidAt ? order.paidAt.toLocaleDateString() : 'N/A'
+                    .review-actions
+                      a.review-action-btn(href=`/product/${item.product.slug}` data-slug=item.product.slug) View Details
+                      a.review-action-btn.order-action-reorder(href=`/product/${item.product.slug}` data-slug=item.product.slug) Re-order
+                else
+                  script.
+                    console.log('Invalid product in order: ' + "#{order._id}", {
+                      productId: "#{item.product && item.product._id ? item.product._id : 'missing'}",
+                      slug: "#{item.product && item.product.slug ? item.product.slug : 'missing'}"
+                    });
+          else
+            .no-reviews
+              i.fas.fa-box-open
+              | No order details found

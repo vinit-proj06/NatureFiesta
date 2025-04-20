@@ -1,0 +1,87 @@
+extends base
+
+block content
+  div.product
+    div.product-detail
+      div.product-navigation
+        a.back-to-products(href="/")
+          i.fa-solid.fa-arrow-left
+          |  Back to Products
+        
+      div.product-detail-container
+        div.product-images
+          div.main-image-container
+            img.main-image(src=`/img/${product.category}/${product.imageCover}`, alt="Main Product Image")
+          
+          div.small-images-container
+            each image, index in product.images
+              div.small-image-box(class=index === 0 ? 'active' : '')
+                img.small-image(
+                  src=`/img/${product.category}/${image}`, 
+                  alt=`Product Image ${index + 1}`,
+                  data-src=`/img/${product.category}/${image}`
+                )
+
+        div.product-details
+          h2.product-name#product-name= product.name
+          h3.product-price#product-price ₹ #{product.price}
+          
+          div.product-size-options
+            h4 Select Size:
+            div.size-buttons
+              button.size-btn.active(type="button" onclick="selectSize(this)") Small
+              button.size-btn(type="button" onclick="selectSize(this)") Medium
+              button.size-btn(type="button" onclick="selectSize(this)") Large
+          
+          div.product-quantity
+            h4 Quantity:
+            div.quantity-selector
+              button.quantity-btn#decrease-qty - 
+              input.qty-input#qty(type="text", name="quantity", value="1", readonly)
+              button.quantity-btn#increase-qty +
+          
+          div.product-address
+            h4 Delivery Address:
+            textarea#user-address(name="address", placeholder="Enter your address", required)= user && user.address ? user.address : ''
+          
+          div.product-description
+            h4 Product Details
+            p#product-description= product.description
+
+          div.product-buttons
+            a.add-to-cart-btn(href="/cart", role="button")
+              i.fas.fa-shopping-cart
+              |  Add to Cart
+            form.buy-now-form(data-product-id=product._id, action="/api/payment/order", method="POST")
+              input(type="hidden", name="productId", value=product._id)
+              input(type="hidden", name="productName", value=product.name)
+              input(type="hidden", name="amount", value=product.price)
+              input(type="hidden", name="description", value=product.description)
+              input(type="hidden", name="quantity", value="1")
+              input#form-user-address(type="hidden", name="address")
+              button.buy-now-btn(type="submit")
+                i.fas.fa-bolt
+                |  Buy Now
+          
+          div.product-features
+            div.feature
+              i.fas.fa-truck
+              span Free Shipping
+            div.feature
+              i.fas.fa-undo
+              span Easy 30-day Returns
+            div.feature
+              i.fas.fa-shield-alt
+              span Quality Guarantee
+          
+          script.
+            // Update hidden address field before submission
+            document.querySelector('.buy-now-form').addEventListener('submit', (e) => {
+              const addressInput = document.querySelector('#user-address');
+              const hiddenAddress = document.querySelector('#form-user-address');
+              hiddenAddress.value = addressInput.value.trim();
+              if (!hiddenAddress.value) {
+                e.preventDefault();
+                alert('Please enter a delivery address');
+              }
+            });

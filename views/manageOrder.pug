@@ -1,0 +1,46 @@
+extends account
+
+block content
+  .user
+    include navigation
+    .user-content#admin-orders
+      h2.admin-heading Order Management
+      .admin-controls
+        input.search-input(type="text" placeholder="Search orders...")
+        select.filter-select
+          option(value="All Statuses") All Statuses
+          option(value="pending") Pending
+          option(value="completed") Completed
+          option(value="cancelled") Cancelled
+      table.admin-table
+        thead
+          tr
+            th Order ID
+            th Customer
+            th Amount
+            th Date
+            th Status
+            th Actions
+        tbody
+          if orders && orders.length > 0
+            each order in orders
+              tr(data-order-id=order.razorpayOrderId)
+                td= order.razorpayOrderId.slice(-6).toUpperCase()
+                td= order.user ? order.user.name : 'N/A'
+                td ₹#{order.totalAmount.toFixed(2)}
+                td= order.createdAt ? order.createdAt.toLocaleDateString() : 'N/A'
+                td
+                  span.status-badge(class=order.status)= order.status
+                td
+                  a.action-btn.view-btn(href=`/orders/${order.razorpayOrderId}`)
+                    i.fas.fa-eye
+                  select.status-select(data-order-id=order.razorpayOrderId)
+                    option(value="pending" selected=order.status === 'pending') Pending
+                    option(value="completed" selected=order.status === 'completed') Completed
+                    option(value="cancelled" selected=order.status === 'cancelled') Cancelled
+                  button.action-btn.delete-btn(data-order-id=order.razorpayOrderId)
+                    i.fas.fa-trash
+          else
+            tr
+              td(colspan="6") No orders found
+      script(src='/js/admin.js')

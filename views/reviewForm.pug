@@ -1,0 +1,39 @@
+extends account
+
+block content
+  .user
+    include navigation
+    .user-content.flex-fix
+      .user-content-reviews
+        h2.form-heading #{review ? 'Edit Review' : 'Add Review'}
+        form.review-form(action=review ? `/api/review/${review._id}` : '/api/review' method="POST")
+          .form-group
+            label(for="product") Product
+            select#product(name="product" required)
+              each product in products
+                option(value=product._id selected=review && review.product && review.product._id.toString() === product._id.toString())= product.name
+          .form-group
+            label(for="rating") Rating
+            select#rating(name="rating" required)
+              - for (let i = 1; i <= 5; i++)
+                option(value=i selected=review && review.rating === i)= i
+          .form-group
+            label(for="review") Review
+            textarea#review(name="review" required)= review ? review.review : ''
+          .review-actions
+            button.review-action-btn(type="submit") #{review ? 'Update Review' : 'Submit Review'}
+            a.review-action-btn(href="/reviews") Cancel
+        if error
+          .error-message= error
+        script.
+          const urlParams = new URLSearchParams(window.location.search);
+          const error = urlParams.get('error');
+          if (error) {
+            let errorDiv = document.querySelector('.error-message');
+            if (!errorDiv) {
+              errorDiv = document.createElement('div');
+              errorDiv.classList.add('error-message');
+              document.querySelector('.review-form').after(errorDiv);
+            }
+            errorDiv.textContent = decodeURIComponent(error);
+          }
